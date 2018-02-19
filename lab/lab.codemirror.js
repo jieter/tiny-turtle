@@ -2,7 +2,8 @@ Lab.codeMirrorOptions = {
   lineNumbers: true,
   matchBrackets: true,
   theme: 'lab',
-  mode: 'javascript'
+  mode: 'javascript',
+  indentUnit: 4
 };
 
 Lab.creationHooks.push(function(lab) {
