@@ -408,20 +408,21 @@ for (var i = 0; i < 36; i++) {
 <div style="clear: both">&nbsp;</div>
 <img src="boom.png" class="example" />
 <p>
-    Dit is een leuke om mee te spelen.
+    Dit is een leuke om mee te spelen: deze boom wordt gemaakt door de schildpad
 </p>
+<div style="clear: both">&nbsp;</div>
 
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
 
-function boom(size, aa, ab, sa, sb) {
+function tree(size, aa, ab, sa, sb) {
   if (size < 1) { return; }
 
   forward(size);
   left(aa);
-  boom(size * sa, aa, ab, sa, sb);
+  tree(size * sa, aa, ab, sa, sb);
 
   right(aa - ab);
-  boom(size * sb, aa, ab, sa, sb);
+  tree(size * sb, aa, ab, sa, sb);
 
   penUp();
   left(-ab);
@@ -436,8 +437,11 @@ forward(100);
 right(180);
 penDown();
 
-boom(60, 45, -55, 0.55, 0.75);
+tree(60, 45, -55, 0.55, 0.75);
 </script>
+
+<div style="clear: both">&nbsp;</div>
+
 <p>
     Als je het leuk vindt kun je de broncode van de schildpad bekijken:
     <a href="https://github.com/jieter/tiny-turtle/blob/gh-pages/tiny-turtle.js">tiny-turtle.js</a>.
