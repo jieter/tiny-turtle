@@ -439,6 +439,45 @@ penDown();
 
 tree(60, 45, -55, 0.55, 0.75);
 </script>
+<div style="clear: both">&nbsp;</div>
+<img src="sierpinski.png" class="example" />
+<p>
+    Sierpinskidriehoek
+</p>
+<div style="clear: both">&nbsp;</div>
+
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+function sierpinski(l, a, r) {
+    if (r > 5) {
+        throw new Error('Maximaal 5');
+    }
+    if (r < 2) {
+        forward(l);
+    } else {
+        l = l / 3;
+        r = r - 1;
+        sierpinski(l, a, r);
+        left(a); sierpinski(l, -a, r);
+        left(a); sierpinski(l, a, r);
+        right(a);sierpinski(l, -a, r);
+        right(a);sierpinski(l, a, r);
+        right(a);sierpinski(l, -a, r);
+        right(a);sierpinski(l, a, r);
+    	left(a); sierpinski(l, -a, r);
+        left(a); sierpinski(l, a, r);
+    }
+}
+
+// naar linksonder bewegen met de pen uit.
+penUp();
+left(90); forward(120);
+left(90); forward(110);
+left(90);
+penDown();
+
+sierpinski(75, 60, 5);
+</script>
+
 
 <div style="clear: both">&nbsp;</div>
 
