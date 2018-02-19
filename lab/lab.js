@@ -86,10 +86,12 @@ var Lab = typeof(window) == 'undefined'
       turtle = new TinyTurtle(canvas);
       worker = new Worker(workerURL);
       worker.onmessage = function(e) {
-        if (e.data.msg == 'done')
+        if (e.data.msg == 'done') {
+          cmds.push({args: [], method: 'stamp', msg: 'turtle-methodcall'});
           finishWorker(cmds, null);
-        else
+        } else {
           cmds.push(e.data);
+        }
       };
       worker.onerror = finishWorker.bind(null, cmds);
       worker.postMessage({
