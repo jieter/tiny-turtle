@@ -25,3 +25,8 @@ footer {
   text-align: center;
   font-size: smaller;
 }
+
+.example {
+    float: right; border: 1px dotted #bbb;
+    clear: both;
+}
