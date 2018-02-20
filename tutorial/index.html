@@ -418,6 +418,7 @@ for (var i = 0; i < 2000; i++) {
 
 <div style="clear: both">&nbsp;</div>
 <script data-role="lab" type="javascript/lab">
+// voorbeeld met penUp / penDown: stippellijntje.
 for (var i = 0; i < 10; i++) {
     forward(5);
     penUp();
@@ -425,9 +426,13 @@ for (var i = 0; i < 10; i++) {
     penDown();
 }
 
+function cirkel(straal) {
+
+}
 </script>
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
 // teken een cirkel met gegeven straal
+// het punt waar we beginnen is het middelpunt van de cirkel.
 function cirkel(straal) {
     penUp();
     right(180);
