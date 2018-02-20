@@ -549,21 +549,19 @@ forward(20);
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
 
 function tree(size, aa, ab, sa, sb) {
-  if (size < 1) { return; }
+    if (size < 1) { return; }
 
-  forward(size);
-  left(aa);
-  tree(size * sa, aa, ab, sa, sb);
+    forward(size);
+    left(aa);
+    tree(size * sa, aa, ab, sa, sb);
 
-  right(aa - ab);
-  tree(size * sb, aa, ab, sa, sb);
+    right(aa - ab);
+    tree(size * sb, aa, ab, sa, sb);
 
-  penUp();
-  left(-ab);
-  right(180);
-  forward(size);
-  right(180);
-  penDown();
+    penUp();
+    left(-ab);
+    forward(-size);
+    penDown();
 }
 penUp();
 right(180);
