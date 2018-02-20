@@ -243,7 +243,6 @@ vierkant(50);
 
 
 <script data-role="lab" type="javascript/lab">
-
 for (var i = 0; i < 3; i++) {
     forward(100);
     // dit klopt niet, want zo krijgen we geen driehoek...
@@ -366,6 +365,8 @@ cirkel(300);
 var stapjes = 2;
 for (var i = 0; i < 180; i++) {
     forward(stapjes);
+    // deze hoek is net iets kleiner dan 90, daarom 'groeit' het plaatje
+    // vanuit het midden. Probeer het maar eens aan te passen naar 89.
     right(89.5);
 
     stapjes += 2;
