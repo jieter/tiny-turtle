@@ -106,7 +106,7 @@ right(90);
 
 </script>
 <p>
-    Verandert het vierkant van vorm als je de waarde aanpast?
+    Verandert het vierkant van vorm als je de waarde van <code>stapjes</code> aanpast?
 </p>
 
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
@@ -211,7 +211,7 @@ vierkant(50);
 </script>
 
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
-function square(width) {
+function vierkant(stapjes) {
     forward(stapjes);
     right(90);
     forward(stapjes);
@@ -246,33 +246,95 @@ vierkant(50);
 
 for (var i = 0; i < 3; i++) {
     forward(100);
-    right(WELKE_HOEK);
+    // dit klopt niet, want zo krijgen we geen driehoek...
+    // Maar welke hoek moet hier wel staan?
+    right(90);
 }
 
 
 </script>
 
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
-
-function driehoek(stapjes) {
-    forward(stapjes);
-    right(120);
-    forward(stapjes);
-    right(120);
-    forward(stapjes);
+for (var i = 0; i < 3; i++) {
+    forward(100);
     right(120);
 }
-
-driehoek(100);
-
 </script>
 
-<h2><a id="circle" href="#circle">IV. cirkel</a></h2>
+<h2><a id="circle" href="#circle">IV. Veelhoeken en cirkels</a></h2>
 
 <p>
+Kun je na de 3- en 4-hoek ook een 5, 6, en 7-hoek maken? En een 12-hoek?
+</p>
+<p>
+Als je de hoeken van een rechthoek bij elkaar optelt krijg je 90 + 90 + 90 + 90 = 360.
+De hoeken van een driehoek bij elkaar opgeteld: 120 + 120 + 120 = 360.
+Wat denk je dat de hoek van een vijfhoek is?
+</p>
+
+<script data-role="lab" type="javascript/lab">
+function vijfhoek(stapjes) {
+    for (var i = 0; i < 5; i++) {
+        forward(stapjes);
+        // dit klopt niet, want zo krijgen we maar vier hoeken...
+        right(90);
+    }
+}
+
+vijfhoek(80);
+</script>
+
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+function vijfhoek(stapjes) {
+    for (var i = 0; i < 5; i++) {
+        forward(stapjes);
+        right(360 / 5);
+    }
+}
+
+vijfhoek(80);
+</script>
+
+<p>
+    Ok, nu hebben we een vijfhoek. Maar de 6-, 7- en 12-hoek dan?
+
+    Kan je het voorbeeld hieronder zo aanpassen dat er niet twee vijfhoeken staan,
+    maar een 5- en een 12-hoek.
 
 </p>
 
+<script data-role="lab" type="javascript/lab">
+function veelhoek(stapjes, hoeken) {
+    // dit levert nogsteeds een 5-hoek op, hoe maak je er een veelhoek van?
+    for (var i = 0; i < 5; i++) {
+        forward(stapjes);
+        right(360 / 5);
+    }
+}
+
+veelhoek(80, 5);
+penStyle = 'blue';
+veelhoek(40, 12);
+
+</script>
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+function veelhoek(stapjes, hoeken) {
+    for (var i = 0; i < hoeken; i++) {
+        forward(stapjes);
+        right(360 / hoeken);
+    }
+}
+
+veelhoek(80, 5);
+penStyle = 'blue';
+veelhoek(40, 12);
+
+</script>
+
+<p>
+    De 12-hoek hierboven lijkt al een beetje op een cirkel.
+    Hoeveel hoeken moet je de veelhoek geven tot je geen verschil meer ziet met een cirkel?
+</p>
 <script data-role="lab" type="javascript/lab">
 function cirkel(omtrek) {
 
@@ -283,19 +345,14 @@ cirkel(300);
 
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
 function cirkel(omtrek) {
-  for (var i = 0; i < 360; i++) {
-    forward(omtrek / 360);
-    right(1);
-  }
+    for (var i = 0; i < 360; i++) {
+        forward(omtrek / 360);
+        right(1);
+    }
 }
 
 cirkel(300);
 </script>
-
-<aside class="panel">
-  <strong>Hint:</strong> De omtrek is het pad wat de schildpad moet lopen.
-  Als je er niet uit komt: doe de schildpad na!
-</aside>
 
 <h2><a id="extra" href="#extra">Extra opdrachten</a></h2>
 
@@ -308,10 +365,10 @@ cirkel(300);
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
 var stapjes = 2;
 for (var i = 0; i < 180; i++) {
-  forward(stapjes);
-  right(89.5);
+    forward(stapjes);
+    right(89.5);
 
-  stapjes += 2;
+    stapjes += 2;
 }
 </script>
 
