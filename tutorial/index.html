@@ -361,14 +361,12 @@ for (var i = 0; i < 2000; i++) {
 
 <div style="clear: both">&nbsp;</div>
 <script data-role="lab" type="javascript/lab">
-
 for (var i = 0; i < 10; i++) {
     forward(5);
     penUp();
     forward(5);
     penDown();
 }
-
 
 </script>
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
@@ -406,6 +404,85 @@ for (var i = 0; i < 36; i++) {
 
 </script>
 <div style="clear: both">&nbsp;</div>
+
+<h2><a id="lcurves" href="#lcurves">Nog meer grappige plaatjes</a></h2>
+
+<img src="koch.png" class="example" />
+<p>
+    Een <a href="https://nl.wikipedia.org/wiki/Koch-kromme#Koch-sneeuwvlok">Koch-sneeuwvlok</a> is gemaakt
+    van 3 Koch-krommen. Hier is de functie voor het maken van een koch-kromme gegeven,
+    kan jij de sneeuwvlok na maken?
+</p>
+<div style="clear: both">&nbsp;</div>
+<script data-role="lab" type="javascript/lab">
+
+function koch(l, r) {
+    if (r < 1) {
+        forward(l);
+        return;
+    }
+    r = r - 1;
+    // F → F+F--F+F
+    koch(l, r);
+    left(60);
+    koch(l, r);
+    right(60);
+    right(60);
+    koch(l, r);
+    left(60);
+    koch(l, r);
+}
+
+// startpositie
+penUp();
+left(90); forward(80);
+left(90); forward(-50);
+left(90);
+
+penDown();
+koch(2, 4);
+</script>
+
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+function koch(l, r) {
+    if (r < 1) {
+        forward(l);
+        return;
+    }
+    r = r - 1;
+    // F → F+F--F+F
+    koch(l, r);
+    left(60);
+    koch(l, r);
+    right(60);
+    right(60);
+    koch(l, r);
+    left(60);
+    koch(l, r);
+}
+
+function koch_driehoek(l, r) {
+    // F -- F -- F
+  	koch(l, r);
+	right(120);
+	koch(l, r);
+	right(120);
+	koch(l, r);
+}
+
+// startpositie
+penUp();
+left(90); forward(80);
+left(90); forward(-50);
+left(90);
+
+penDown();
+koch_driehoek(2, 4);
+penUp();
+forward(20);
+</script>
+
+<div style="clear: both">&nbsp;</div>
 <img src="boom.png" class="example" />
 <p>
     Dit is een leuke om mee te spelen: deze boom wordt gemaakt door de schildpad
@@ -442,7 +519,7 @@ tree(60, 45, -55, 0.55, 0.75);
 <div style="clear: both">&nbsp;</div>
 <img src="sierpinski.png" class="example" />
 <p>
-    Sierpinskidriehoek
+    <a href="https://nl.wikipedia.org/wiki/Driehoek_van_Sierpi%C5%84ski">Sierpinskidriehoek</a>
 </p>
 <div style="clear: both">&nbsp;</div>
 
@@ -459,10 +536,10 @@ function sierpinski(l, a, r) {
         sierpinski(l, a, r);
         left(a); sierpinski(l, -a, r);
         left(a); sierpinski(l, a, r);
-        right(a);sierpinski(l, -a, r);
-        right(a);sierpinski(l, a, r);
-        right(a);sierpinski(l, -a, r);
-        right(a);sierpinski(l, a, r);
+        right(a); sierpinski(l, -a, r);
+        right(a); sierpinski(l, a, r);
+        right(a); sierpinski(l, -a, r);
+        right(a); sierpinski(l, a, r);
     	left(a); sierpinski(l, -a, r);
         left(a); sierpinski(l, a, r);
     }
@@ -477,10 +554,48 @@ penDown();
 
 sierpinski(75, 60, 5);
 </script>
-
-
+<div style="clear: both">&nbsp;</div>
+<img src="hilbert.png" class="example" />
+<p>
+    <a href="https://nl.wikipedia.org/wiki/Hilbert-kromme">Hilbert-kromme</a>
+</p>
 <div style="clear: both">&nbsp;</div>
 
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+function hilbert(l, r, a) {
+    if (r < 1) {
+        return;
+    }
+    r = r - 1;
+    var dir = (a ? 90 : -90);
+
+    // A -> - B F + A F A + F B -
+    // B -> + A F - B F B - F A +
+    left(dir);
+    hilbert(l, r, !a);
+    forward(l);
+    right(dir);
+    hilbert(l, r, a);
+    forward(l);
+    hilbert(l, r, a);
+    right(dir);
+    forward(l);
+    hilbert(l, r, !a);
+    left(dir);
+}
+
+// naar linksboven bewegen met de pen uit.
+penUp();
+left(90); forward(120);
+right(90); forward(120);
+right(90);
+
+// pen aan, en teken de hilbert-kromme
+penDown();
+hilbert(3, 6);
+</script>
+
+<div style="clear: both">&nbsp;</div>
 <p>
     Als je het leuk vindt kun je de broncode van de schildpad bekijken:
     <a href="https://github.com/jieter/tiny-turtle/blob/gh-pages/tiny-turtle.js">tiny-turtle.js</a>.
