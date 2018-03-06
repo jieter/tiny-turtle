@@ -7,8 +7,21 @@
 <link rel="stylesheet" href="../lab/lab.codemirror.css">
 <link rel="stylesheet" href="highlight.css">
 <title>TinyTurtle Programmeerles</title>
-<h1>TinyTurtle Programmeerles</h1>
+<h1>Programmeerles 6 maart 2018</h1>
+<aside class="panel">
+    <h3><a id="waarom" href="#waarom">Waarom programmeren?</a></h3>
+    <img src="voorbeeld1.png" />
+    <img src="voorbeeld2.png" />
+    <img src="voorbeeld3.png" />
+    <img src="spirograph.png" />
+    <img src="hilbert.png" />
+    <img src="sierpinski.png" />
 
+
+    <img src="kleur1.png" />
+    <img src="kleur2.png" />
+    <img src="kleur4.png" />
+</aside>
 <aside class="panel">
     <h3><a id="tips" href="#tips">Tips</a></h3>
 
@@ -26,7 +39,7 @@
         Kijk bij het regelnummer uit de foutmelding of je misschien iets bent vergeten.
     </p>
     <p>
-        <strong>Vraag om hulp.</strong> Loop je vast? Je kunt altijd <a onclick="TogetherJS(this);">iemand om hulp vragen</a> als je er niet uitkomt.
+        <strong>Vraag om hulp.</strong> Loop je vast? Je kunt altijd mij of iemand anders om hulp vragen als je er niet uitkomt.
     </p>
 
 </aside>
@@ -73,14 +86,69 @@ right(90);
   de schildpad en te onthouden of op te schrijven wat je achtereenvolgens moet doen.
 </aside>
 
+<div style="clear: both">&nbsp;</div>
+<img src="voorbeeld1.png" class="example" />
+<p>
+    Maak het plaatje hiernaast na. Je kunt ook het commando <code>left( hoek )</code> te gebruiken om linksaf te slaan.
+</p>
+<div style="clear: both">&nbsp;</div>
+<script data-role="lab" type="javascript/lab">
+forward(50);
+</script>
+
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+forward(50);
+right(90);
+forward(50);
+right(90);
+forward(100);
+right(90);
+forward(100);
+right(90);
+forward(50);
+right(90);
+forward(50);
+left(90);
+</script>
+
+
+<div style="clear: both">&nbsp;</div>
+<img src="ruiten.png" class="example" />
+<p>
+    En deze?
+</p>
+<div style="clear: both">&nbsp;</div>
+<script data-role="lab" type="javascript/lab">
+
+</script>
+
+<script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
+right(45);
+forward(50);
+right(90);
+forward(50);
+right(90);
+forward(50);
+right(90);
+forward(100);
+left(90);
+forward(50);
+left(90);
+forward(50);
+left(90);
+forward(50);
+left(45);
+</script>
+
 <h2><a id="squares" href="#squares">II. Vierkanten (variabelen)</a></h2>
 
 <p>
-    Hierboven maakten we een vierkant van 100 stapjes.
-    Stel dat we nu een vierkant willen maken van 50 bij 50 stapjes.
+    Hierboven maakten we tekeningen met een vast formaat.
+    Stel dat we makkeijk de grootte van een vierkant willen kunnen aanpassen, bijvoorbeeld
+    een vierkant van 50 bij 50 stapjes.
     Dan kunnen we natuurlijk vier keer de 100 in een 50 veranderen, maar dat wordt snel vervelend.
 
-    We hebben dan iets nodig wat we makkelijk kunnen aanpassen zonder alle plekken bij langs te gaan.
+    We hebben dan iets nodig in plaats van het getal, wat we makkelijk kunnen aanpassen zonder telkens elke plek langs te gaan.
 
     Zoiets noemen we een <em>variabele</em>.
     Je kunt een variabele zien als bakje met een naam waar je iets in kunt bewaren, bijvoorbeeld het getal 50.
@@ -88,7 +156,7 @@ right(90);
 </p>
 
 <p>
-  Kun je hieronder met de <em>variabele</em> de schildpad een vierkant laten tekenen?
+  Kun je hieronder met de <em>variabele</em> <code>stapjes</code> de schildpad een vierkant laten tekenen?
 </p>
 
 <script data-role="lab" type="javascript/lab">
@@ -169,11 +237,7 @@ right(90);
 <p>
     Verder oefenen? Probeer een van de volgende plaatjes na te maken.
 </p>
-<p>
-    Soms is het ook handig om het commando <code>left( hoek )</code> te gebruiken.
-</p>
 
-<img src="voorbeeld1.png" style="width: 24%;" />
 <img src="voorbeeld2.png" style="width: 24%;" />
 <img src="voorbeeld3.png" style="width: 24%;" />
 <img src="voorbeeld4.png" style="width: 24%;" />
@@ -196,7 +260,13 @@ right(90);
 </p>
 
 <p>
-    Kun je het voorbeeld hieronder zo aanpassen dat er twee vierkanten (50, 100 stapjes) worden getekend?
+    Hieronder staat <code>function vierkant (stapjes) { &laquo;commandos&raquo; }</code>, wat betekent:<br />
+     - een functie/commando met de naam <code>vierkant</code><br />
+     - het commando krijgt 1 variabele mee met de naam <code>stapjes</code><br />
+     - <code>&laquo;commandos&raquo;</code> wordt uitgevoerd als we het commando uitvoeren.<br />
+     <br />
+
+    Kun je het zo aanpassen dat er twee vierkanten (50, 100 stapjes) worden getekend?
 </p>
 <script data-role="lab" type="javascript/lab">
 
@@ -236,11 +306,24 @@ vierkant(50);
     maar wat als je niet precies weet hoe vaak je iets wilt herhalen?
 </p>
 <p>
-    Of je wilt iets bijvoorbeeld 100 keer herhalen, dat is wel erg veel type-werk.
+    Of je wilt iets bijvoorbeeld 100 keer herhalen, dat is wel erg veel type-werk.<br />
 
-    Gelukkig hebben we daar iets op bedacht, namelijk een loop.
+    Gelukkig is daar iets op bedacht, namelijk een loop. Daarmee kunnen we een setje commando's meerdere keren uitvoeren.
 </p>
 
+<p>
+    In het voorbeeld hieronder staat de code <code>for (var i = 0; i < 3; i++) { &laquo;commandos&raquo; }</code>, wat betekent:<br />
+    <br />
+    - Geef variabele <code>i</code> de waarde <code>0</code>.<br />
+    - Tel door tot <code>i</code> niet meer kleiner dan 3 is.<br />
+    - Tel elke keer 1 op bij <code>i</code>
+<ul>
+<p>
+    Dus eerst is <code>i=0</code> (wat kleiner is dan 3), dus worden de <code>&laquo;commandos&raquo;</code> uitgevoerd.<br />
+    Dan tellen we 1 op bij i, dus is <code>i=1</code> (wat kleiner is dan 3), dus worden de <code>&laquo;commandos&raquo;</code> uitgevoerd.<br />
+    Dan tellen we 1 op bij i, dus is <code>i=2</code> (wat kleiner is dan 3), dus worden de <code>&laquo;commandos&raquo;</code> uitgevoerd.<br />
+    Dan tellen we 1 op bij i, dus is <code>i=3</code> (wat niet kleiner is dan 3), dus stoppen we.
+</p>
 
 <script data-role="lab" type="javascript/lab">
 for (var i = 0; i < 3; i++) {
@@ -341,6 +424,10 @@ function cirkel(omtrek) {
 
 cirkel(300);
 </script>
+<aside class="panel">
+  <strong>Hint:</strong> Hiervooer moet je bedenken hoe groot je stapje moet zijn
+  voor een bepaalde omtrek. Hoe groot is de omtrek van je cirkel als je 360 stapjes neemt van 1? en van 2? en van 0.5?
+</aside>
 
 <script data-role="solution" type="javascript/lab" data-text="Jieters oplossing">
 function cirkel(omtrek) {
